@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir=".." name="Robocup_rescue_simulation_software">
+    <property file="nbproject/nbjdk.properties"/>
+    <property location="${netbeans.user}/build.properties" name="user.properties.file"/>
+    <property file="${user.properties.file}"/>
+    <import file="jdk.xml"/>
+    <target depends="-jdk-init" name="jars">
+        <ant inheritall="false" target="jars"/>
+    </target>
+    <target depends="-jdk-init" name="clean">
+        <ant inheritall="false" target="clean"/>
+    </target>
+    <target depends="-jdk-init" name="javadoc">
+        <ant inheritall="false" target="javadoc"/>
+    </target>
+    <target depends="-jdk-init" name="start-kernel">
+        <ant inheritall="false" target="start-kernel"/>
+    </target>
+    <target depends="-jdk-init" name="junit">
+        <ant inheritall="false" target="junit"/>
+    </target>
+</project>

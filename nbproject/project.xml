@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.ant.freeform</type>
+    <configuration>
+        <general-data xmlns="http://www.netbeans.org/ns/freeform-project/1">
+            <name>Roborescue</name>
+        </general-data>
+        <general-data xmlns="http://www.netbeans.org/ns/freeform-project/2">
+            <!-- Do not use Project Properties customizer when editing this file manually. -->
+            <name>Roborescue</name>
+            <properties/>
+            <folders>
+                <source-folder>
+                    <label>Robocup rescue simulation software</label>
+                    <location>.</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>oldsims</label>
+                    <type>java</type>
+                    <location>oldsims</location>
+                    <excludes>**/*.class</excludes>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/misc/src</label>
+                    <type>java</type>
+                    <location>modules/misc/src</location>
+                    <excludes>**/*.class</excludes>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/gis2/src</label>
+                    <type>java</type>
+                    <location>modules/gis2/src</location>
+                    <excludes>**/*.class</excludes>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/handy/src</label>
+                    <type>java</type>
+                    <location>modules/handy/src</location>
+                    <excludes>**/*.class</excludes>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/human/src</label>
+                    <type>java</type>
+                    <location>modules/human/src</location>
+                    <excludes>**/*.class</excludes>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/standard/src</label>
+                    <type>java</type>
+                    <location>modules/standard/src</location>
+                    <excludes>**/*.class</excludes>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/sample/src</label>
+                    <type>java</type>
+                    <location>modules/sample/src</location>
+                    <excludes>**/*.class</excludes>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/clear/src</label>
+                    <type>java</type>
+                    <location>modules/clear/src</location>
+                    <excludes>**/*.class</excludes>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/kernel/src</label>
+                    <type>java</type>
+                    <location>modules/kernel/src</location>
+                    <excludes>**/*.class</excludes>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/rescuecore2/src</label>
+                    <type>java</type>
+                    <location>modules/rescuecore2/src</location>
+                    <excludes>**/*.class</excludes>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/ignition/src</label>
+                    <type>java</type>
+                    <location>modules/ignition/src</location>
+                    <excludes>**/*.class</excludes>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/maps/src</label>
+                    <type>java</type>
+                    <location>modules/maps/src</location>
+                    <excludes>**/*.class</excludes>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/resq-fire/src</label>
+                    <type>java</type>
+                    <location>modules/resq-fire/src</location>
+                    <excludes>**/*.class</excludes>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/collapse/src</label>
+                    <type>java</type>
+                    <location>modules/collapse/src</location>
+                    <excludes>**/*.class</excludes>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>modules/traffic3/src</label>
+                    <type>java</type>
+                    <location>modules/traffic3/src</location>
+                    <excludes>**/*.class</excludes>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+            </folders>
+            <ide-actions>
+                <action name="build">
+                    <script>nbproject/nbjdk.xml</script>
+                    <target>jars</target>
+                </action>
+                <action name="clean">
+                    <script>nbproject/nbjdk.xml</script>
+                    <target>clean</target>
+                </action>
+                <action name="javadoc">
+                    <script>nbproject/nbjdk.xml</script>
+                    <target>javadoc</target>
+                </action>
+                <action name="run">
+                    <script>nbproject/nbjdk.xml</script>
+                    <target>start-kernel</target>
+                </action>
+                <action name="test">
+                    <script>nbproject/nbjdk.xml</script>
+                    <target>junit</target>
+                </action>
+                <action name="rebuild">
+                    <script>nbproject/nbjdk.xml</script>
+                    <target>clean</target>
+                    <target>compile</target>
+                </action>
+            </ide-actions>
+            <export>
+                <type>jar</type>
+                <location>jars/clear.jar</location>
+                <script>nbproject/nbjdk.xml</script>
+                <build-target>jars</build-target>
+            </export>
+            <export>
+                <type>jar</type>
+                <location>jars/collapse.jar</location>
+                <script>nbproject/nbjdk.xml</script>
+                <build-target>jars</build-target>
+            </export>
+            <export>
+                <type>jar</type>
+                <location>jars/gis2.jar</location>
+                <script>nbproject/nbjdk.xml</script>
+                <build-target>jars</build-target>
+            </export>
+            <export>
+                <type>jar</type>
+                <location>jars/handy.jar</location>
+                <script>nbproject/nbjdk.xml</script>
+                <build-target>jars</build-target>
+            </export>
+            <export>
+                <type>jar</type>
+                <location>jars/human.jar</location>
+                <script>nbproject/nbjdk.xml</script>
+                <build-target>jars</build-target>
+            </export>
+            <export>
+                <type>jar</type>
+                <location>jars/ignition.jar</location>
+                <script>nbproject/nbjdk.xml</script>
+                <build-target>jars</build-target>
+            </export>
+            <export>
+                <type>jar</type>
+                <location>jars/kernel.jar</location>
+                <script>nbproject/nbjdk.xml</script>
+                <build-target>jars</build-target>
+            </export>
+            <export>
+                <type>jar</type>
+                <location>jars/maps.jar</location>
+                <script>nbproject/nbjdk.xml</script>
+                <build-target>jars</build-target>
+            </export>
+            <export>
+                <type>jar</type>
+                <location>jars/misc.jar</location>
+                <script>nbproject/nbjdk.xml</script>
+                <build-target>jars</build-target>
+            </export>
+            <export>
+                <type>jar</type>
+                <location>jars/rescuecore2.jar</location>
+                <script>nbproject/nbjdk.xml</script>
+                <build-target>jars</build-target>
+            </export>
+            <export>
+                <type>jar</type>
+                <location>jars/resq-fire.jar</location>
+                <script>nbproject/nbjdk.xml</script>
+                <build-target>jars</build-target>
+            </export>
+            <export>
+                <type>jar</type>
+                <location>jars/sample.jar</location>
+                <script>nbproject/nbjdk.xml</script>
+                <build-target>jars</build-target>
+            </export>
+            <export>
+                <type>jar</type>
+                <location>jars/standard.jar</location>
+                <script>nbproject/nbjdk.xml</script>
+                <build-target>jars</build-target>
+            </export>
+            <export>
+                <type>jar</type>
+                <location>jars/traffic3.jar</location>
+                <script>nbproject/nbjdk.xml</script>
+                <build-target>jars</build-target>
+            </export>
+            <view>
+                <items>
+                    <source-folder style="packages">
+                        <label>oldsims</label>
+                        <location>oldsims</location>
+                        <excludes>**/*.class</excludes>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/misc/src</label>
+                        <location>modules/misc/src</location>
+                        <excludes>**/*.class</excludes>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/gis2/src</label>
+                        <location>modules/gis2/src</location>
+                        <excludes>**/*.class</excludes>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/handy/src</label>
+                        <location>modules/handy/src</location>
+                        <excludes>**/*.class</excludes>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/human/src</label>
+                        <location>modules/human/src</location>
+                        <excludes>**/*.class</excludes>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/standard/src</label>
+                        <location>modules/standard/src</location>
+                        <excludes>**/*.class</excludes>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/sample/src</label>
+                        <location>modules/sample/src</location>
+                        <excludes>**/*.class</excludes>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/clear/src</label>
+                        <location>modules/clear/src</location>
+                        <excludes>**/*.class</excludes>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/kernel/src</label>
+                        <location>modules/kernel/src</location>
+                        <excludes>**/*.class</excludes>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/rescuecore2/src</label>
+                        <location>modules/rescuecore2/src</location>
+                        <excludes>**/*.class</excludes>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/ignition/src</label>
+                        <location>modules/ignition/src</location>
+                        <excludes>**/*.class</excludes>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/maps/src</label>
+                        <location>modules/maps/src</location>
+                        <excludes>**/*.class</excludes>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/resq-fire/src</label>
+                        <location>modules/resq-fire/src</location>
+                        <excludes>**/*.class</excludes>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/collapse/src</label>
+                        <location>modules/collapse/src</location>
+                        <excludes>**/*.class</excludes>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>modules/traffic3/src</label>
+                        <location>modules/traffic3/src</location>
+                        <excludes>**/*.class</excludes>
+                    </source-folder>
+                    <source-file>
+                        <location>build.xml</location>
+                    </source-file>
+                </items>
+                <context-menu>
+                    <ide-action name="build"/>
+                    <ide-action name="rebuild"/>
+                    <ide-action name="clean"/>
+                    <ide-action name="javadoc"/>
+                    <ide-action name="run"/>
+                    <ide-action name="test"/>
+                </context-menu>
+            </view>
+            <subprojects/>
+        </general-data>
+        <java-data xmlns="http://www.netbeans.org/ns/freeform-project-java/3">
+            <compilation-unit>
+                <package-root>modules/misc/src</package-root>
+                <package-root>modules/gis2/src</package-root>
+                <package-root>modules/handy/src</package-root>
+                <package-root>modules/human/src</package-root>
+                <package-root>modules/standard/src</package-root>
+                <package-root>modules/sample/src</package-root>
+                <package-root>modules/clear/src</package-root>
+                <package-root>modules/kernel/src</package-root>
+                <package-root>modules/rescuecore2/src</package-root>
+                <package-root>modules/ignition/src</package-root>
+                <package-root>modules/maps/src</package-root>
+                <package-root>modules/resq-fire/src</package-root>
+                <package-root>modules/collapse/src</package-root>
+                <package-root>modules/traffic3/src</package-root>
+                <package-root>oldsims</package-root>
+                <classpath mode="compile">lib/rescuecore.jar:lib/resq-fire.jar:lib/commons-logging-1.1.1.jar:lib/dom4j.jar:lib/jaxen-1.1.1.jar:lib/jcommon-1.0.16.jar:lib/jfreechart-1.0.13.jar:lib/jscience-4.3.jar:lib/jsi-1.0b2p1.jar:lib/jts-1.11.jar:lib/junit-4.5.jar:lib/log4j-1.2.15.jar:lib/trove-0.1.8.jar:lib/uncommons-maths-1.2.jar:lib/xml-0.0.6.jar</classpath>
+                <built-to>jars/clear.jar</built-to>
+                <built-to>jars/collapse.jar</built-to>
+                <built-to>jars/gis2.jar</built-to>
+                <built-to>jars/handy.jar</built-to>
+                <built-to>jars/human.jar</built-to>
+                <built-to>jars/ignition.jar</built-to>
+                <built-to>jars/kernel.jar</built-to>
+                <built-to>jars/maps.jar</built-to>
+                <built-to>jars/misc.jar</built-to>
+                <built-to>jars/rescuecore2.jar</built-to>
+                <built-to>jars/resq-fire.jar</built-to>
+                <built-to>jars/sample.jar</built-to>
+                <built-to>jars/standard.jar</built-to>
+                <built-to>jars/traffic3.jar</built-to>
+                <javadoc-built-to>docs/javadoc</javadoc-built-to>
+                <source-level>1.7</source-level>
+            </compilation-unit>
+        </java-data>
+        <preferences xmlns="http://www.netbeans.org/ns/auxiliary-configuration-preferences/1">
+            <module name="org-netbeans-modules-editor-indent">
+                <node name="CodeStyle">
+                    <property name="usedProfile" value="project"/>
+                    <node name="project">
+                        <property name="spaces-per-tab" value="4"/>
+                        <property name="tab-size" value="4"/>
+                        <property name="indent-shift-width" value="4"/>
+                        <property name="expand-tabs" value="false"/>
+                        <property name="text-limit-width" value="80"/>
+                        <property name="text-line-wrap" value="none"/>
+                    </node>
+                </node>
+                <node name="text">
+                    <node name="x-java">
+                        <node name="CodeStyle">
+                            <node name="project"/>
+                        </node>
+                    </node>
+                </node>
+            </module>
+            <module name="org-netbeans-modules-projectimport-eclipse-core"/>
+        </preferences>
+    </configuration>
+</project>
