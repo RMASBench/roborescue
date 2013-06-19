@@ -14,3 +14,7 @@
 build/
 jars/
 jars-instrumented/
+
+# Ignore the oldsims jars
+lib/rescuecore.jar
+lib/resq-fire.jar
