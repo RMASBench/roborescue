@@ -69,6 +69,7 @@ public class MiscSimulator extends StandardSimulator implements GUIComponent {
 		GAS_STATION_EXPLOSION_RANG = config.getIntValue("ignition.gas_station.explosion.range", 0);
 		humans = new HashMap<EntityID, HumanAttributes>();
 		newlyBrokenBuildings = new HashSet<EntityID>();
+		oldBrokenBuildingsBuriedness = new HashMap<>();
 		newlyExplosedGasStations = new HashSet<EntityID>();
 		Logger.info("MiscSimulator connected. World has "
 				+ model.getAllEntities().size() + " entities.");
