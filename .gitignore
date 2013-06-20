@@ -20,4 +20,7 @@ lib/rescuecore.jar
 lib/resq-fire.jar
 
 # Ignore netbeans stuff
-/nbproject/private/
+nbproject/private/
+
+# Ignore rays files
+boot/rays/*
