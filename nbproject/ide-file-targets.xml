@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir=".." name="Roborescue-IDE">
+    <property file="nbproject/nbjdk.properties"/>
+    <property location="${netbeans.user}/build.properties" name="user.properties.file"/>
+    <property file="${user.properties.file}"/>
+    <import file="jdk.xml"/>
+    <!-- TODO: edit the following target according to your needs -->
+    <!-- (more info: http://www.netbeans.org/kb/articles/freeform-config.html#runsingle) -->
+    <target depends="-jdk-init" name="run-selected-file-in-src">
+        <fail unless="run.class">Must set property 'run.class'</fail>
+        <java classname="${run.class}" failonerror="true" fork="true">
+            <classpath>
+                <pathelement path="lib/rescuecore.jar:lib/resq-fire.jar:lib/commons-logging-1.1.1.jar:lib/dom4j.jar:lib/jaxen-1.1.1.jar:lib/jcommon-1.0.16.jar:lib/jfreechart-1.0.13.jar:lib/jscience-4.3.jar:lib/jsi-1.0b2p1.jar:lib/jts-1.11.jar:lib/junit-4.5.jar:lib/log4j-1.2.15.jar:lib/trove-0.1.8.jar:lib/uncommons-maths-1.2.jar:lib/xml-0.0.6.jar"/>
+                <pathelement location="jars/clear.jar"/>
+                <pathelement location="jars/collapse.jar"/>
+                <pathelement location="jars/gis2.jar"/>
+                <pathelement location="jars/handy.jar"/>
+                <pathelement location="jars/human.jar"/>
+                <pathelement location="jars/ignition.jar"/>
+                <pathelement location="jars/kernel.jar"/>
+                <pathelement location="jars/maps.jar"/>
+                <pathelement location="jars/misc.jar"/>
+                <pathelement location="jars/rescuecore2.jar"/>
+                <pathelement location="jars/resq-fire.jar"/>
+                <pathelement location="jars/sample.jar"/>
+                <pathelement location="jars/standard.jar"/>
+                <pathelement location="jars/traffic3.jar"/>
+            </classpath>
+        </java>
+    </target>
+</project>
