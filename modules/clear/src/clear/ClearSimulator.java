@@ -55,51 +55,48 @@ public class ClearSimulator extends StandardSimulator {
         Set<EntityID> cleared = new HashSet<EntityID>();
         for (Command command : c.getCommands()) {
             if (command instanceof AKClear) {
-
-            	Logger.warn("AKClear is Deprecated use AKClearArea instead");
-            	continue;
-//                AKClear clear = (AKClear)command;
-//                if (!isValid(clear, cleared)) {
-//                    continue;
-//                }
-//                Logger.debug("Processing " + clear);
-//                EntityID blockadeID = clear.getTarget();
-//                Blockade blockade = (Blockade)model.getEntity(blockadeID);
-//                Area area = (Area)model.getEntity(blockade.getPosition());
-//                int cost = blockade.getRepairCost();
-//                int rate = config.getIntValue(REPAIR_RATE_KEY);
-//                Logger.debug("Blockade repair cost: " + cost);
-//                Logger.debug("Blockade repair rate: " + rate);
-//                if (rate >= cost) {
-//                    // Remove the blockade entirely
-//                    List<EntityID> ids = new ArrayList<EntityID>(area.getBlockades());
-//                    ids.remove(blockadeID);
-//                    area.setBlockades(ids);
-//                    model.removeEntity(blockadeID);
-//                    changes.addChange(area, area.getBlockadesProperty());
-//                    changes.entityDeleted(blockadeID);
-//                    partiallyCleared.remove(blockade);
-//                    cleared.add(blockadeID);
-//                    Logger.debug("Cleared " + blockade);
-//                }
-//                else {
-//                    // Update the repair cost
-//                    if (!partiallyCleared.containsKey(blockade)) {
-//                        partiallyCleared.put(blockade, cost);
-//                    }
-//                    cost -= rate;
-//                    blockade.setRepairCost(cost);
-//                    changes.addChange(blockade, blockade.getRepairCostProperty());
-//                }
+		AKClear clear = (AKClear)command;
+		if (!isValid(clear, cleared)) {
+		    continue;
+		}
+		Logger.debug("Processing " + clear);
+		EntityID blockadeID = clear.getTarget();
+		Blockade blockade = (Blockade)model.getEntity(blockadeID);
+		Area area = (Area)model.getEntity(blockade.getPosition());
+		int cost = blockade.getRepairCost();
+		int rate = config.getIntValue(REPAIR_RATE_KEY);
+		Logger.debug("Blockade repair cost: " + cost);
+		Logger.debug("Blockade repair rate: " + rate);
+		if (rate >= cost) {
+		    // Remove the blockade entirely
+		    List<EntityID> ids = new ArrayList<EntityID>(area.getBlockades());
+		    ids.remove(blockadeID);
+		    area.setBlockades(ids);
+		    model.removeEntity(blockadeID);
+		    changes.addChange(area, area.getBlockadesProperty());
+		    changes.entityDeleted(blockadeID);
+		    partiallyCleared.remove(blockade);
+		    cleared.add(blockadeID);
+		    Logger.debug("Cleared " + blockade);
+		}
+		else {
+		    // Update the repair cost
+		    if (!partiallyCleared.containsKey(blockade)) {
+			partiallyCleared.put(blockade, cost);
+		    }
+		    cost -= rate;
+		    blockade.setRepairCost(cost);
+		    changes.addChange(blockade, blockade.getRepairCostProperty());
+		}
             } else if (command instanceof AKClearArea) {
-				AKClearArea clear = (AKClearArea) command;
-				if (!isValid(clear, cleared)) {
-					continue;
-				}
+		AKClearArea clear = (AKClearArea) command;
+		if (!isValid(clear, cleared)) {
+		    continue;
+		}
 
-				processClearArea(clear, changes);
-				Logger.debug("Processing " + clear);
-			}
+		processClearArea(clear, changes);
+		Logger.debug("Processing " + clear);
+	    }
         }
         // Shrink partially cleared blockades
         for (Map.Entry<Blockade, Integer> next : partiallyCleared.entrySet()) {
@@ -147,35 +144,20 @@ public class ClearSimulator extends StandardSimulator {
 				.getPosition(model);
 
 		Map<Blockade, java.awt.geom.Area> blockades = new HashMap<Blockade, java.awt.geom.Area>();
-		Set<EntityID> checkedAreas = new HashSet<EntityID>();
-		Queue<Area> queue = new LinkedList<Area>();
-		queue.add(agentPosition);
-		while (queue.size() > 0) {
-			Area area = queue.poll();
-			checkedAreas.add(area.getID());
-			if (area.isBlockadesDefined()) {
-				for (EntityID blockadeID : area.getBlockades()) {
-					Blockade blockade = (Blockade) model.getEntity(blockadeID);
-					if (blockade == null)
-						continue;
-					if (blockade.getShape() == null)
-						System.err.println("Blockade Shape is null");
-					blockades.put(blockade, new java.awt.geom.Area(blockade.getShape()));
+		for (StandardEntity entity : model.getObjectsInRange(agent.getX(), agent.getY(), length)) {
+			if(entity instanceof Area) {
+				Area area = (Area) entity;
+				if (area.isBlockadesDefined()) {
+					for (EntityID blockadeID : area.getBlockades()) {
+						Blockade blockade = (Blockade) model.getEntity(blockadeID);
+						if (blockade == null)
+							continue;
+						if (blockade.getShape() == null)
+							System.err.println("Blockade Shape is null");
+						blockades.put(blockade, new java.awt.geom.Area(blockade.getShape()));
+					}
 				}
 			}
-
-			for (Edge edge : area.getEdges())
-				if (edge.getNeighbour() != null
-						&& !checkedAreas.contains(edge.getNeighbour())) {
-					double dist = Math.hypot(
-							(edge.getStartX() + edge.getEndX()) / 2
-									- agent.getX(),
-							(edge.getStartY() + edge.getEndY()) / 2
-									- agent.getY());
-					if (dist < length)
-						queue.add((Area) model
-								.getEntity(edge.getNeighbour()));
-				}
 		}
 
 		int counter = 0;
@@ -241,7 +223,8 @@ public class ClearSimulator extends StandardSimulator {
 						Iterator<EntityID> it = newIDs.iterator();
 						List<Blockade> newBlockades = new ArrayList<Blockade>();
 						if (areas.size() > 0)
-							Logger.debug("Creating new blockade objects");
+							Logger.debug("Creating new blockade objects for " + blockade.getID().getValue()
+									+ " " + areas.size());
 						for (int[] apexes : areas) {
 							EntityID id = it.next();
 							Blockade b = makeBlockade(id, apexes, road.getID());
