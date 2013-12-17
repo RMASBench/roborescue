@@ -61,6 +61,8 @@ public final class ControlMessageFactory extends
 			return new AKConnect(data);
 		case AK_ACKNOWLEDGE:
 			return new AKAcknowledge(data);
+		case AK_DONE:
+			return new AKDone(data);
 		case KA_CONNECT_OK:
 			return new KAConnectOK(data);
 		case KA_CONNECT_ERROR:

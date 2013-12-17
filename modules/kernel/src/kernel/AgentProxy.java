@@ -14,6 +14,7 @@ import rescuecore2.worldmodel.EntityID;
 import rescuecore2.worldmodel.ChangeSet;
 import rescuecore2.log.Logger;
 import rescuecore2.misc.collections.LazyMap;
+import rescuecore2.messages.control.AKDone;
 
 /**
    This class is the kernel interface to an agent.
@@ -21,6 +22,7 @@ import rescuecore2.misc.collections.LazyMap;
 public class AgentProxy extends AbstractKernelComponent {
     private Entity entity;
     private Map<Integer, Collection<Command>> commands;
+	private Map<Integer, Boolean> dones;
 
     /**
        Construct an agent.
@@ -35,6 +37,12 @@ public class AgentProxy extends AbstractKernelComponent {
             @Override
             public Collection<Command> createValue() {
                 return new ArrayList<Command>();
+            }
+        };
+		dones = new LazyMap<Integer, Boolean>() {
+            @Override
+            public Boolean createValue() {
+                return false;
             }
         };
         c.addConnectionListener(new AgentConnectionListener());
@@ -67,6 +75,20 @@ public class AgentProxy extends AbstractKernelComponent {
         return result;
     }
 
+	/**
+       Check if an agent is done for a particular time.
+       @param timestep The current timestep.
+       @return True if the agent has signaled that it is done, or false otherwise
+     */
+	public boolean isDone(int timestep) {
+		boolean result;
+		synchronized (dones) {
+			result = dones.get(timestep);
+		}
+		Logger.trace(entity.toString() + " isDone(" + timestep + ") returning " + result);
+		return result;
+	}
+
     /**
        Notify the of a perception update.
        @param time The current timestep.
@@ -90,6 +112,15 @@ public class AgentProxy extends AbstractKernelComponent {
         }
         int time = c.getTime();
         Logger.trace("AgentProxy " + entity + " received " + c);
+		
+		if (c instanceof AKDone) {
+			synchronized (dones) {
+				dones.put(time, Boolean.TRUE);
+				dones.notifyAll();
+			}
+			return;
+		}
+
         synchronized (commands) {
             Collection<Command> result = commands.get(time);
             result.add(c);

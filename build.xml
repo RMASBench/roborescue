@@ -87,13 +87,14 @@
 
   <!-- Old simulators -->
   <target name="oldsims" description="Compile all the old simulators">
-    <javac srcdir="${basedir}/oldsims/" debug="${debug}">
+      <javac srcdir="${basedir}/oldsims/" debug="${debug}">
       <include name="rescuecore/**/*.java"/>
     </javac>
     <jar destfile="${lib.dir}/rescuecore.jar">
       <fileset dir="${basedir}/oldsims" includes="rescuecore/**/*.class"/>
     </jar>
     <javac srcdir="${basedir}/oldsims/" debug="${debug}">
+      <compilerarg line="-encoding utf-8"/>
       <include name="firesimulator/**/*.java"/>
       <classpath>
         <fileset dir="${lib.dir}">

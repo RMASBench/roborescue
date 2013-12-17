@@ -5,6 +5,7 @@ import java.util.EnumSet;
 import java.util.List;
 
 import rescuecore2.components.AbstractAgent;
+import rescuecore2.messages.control.KASense;
 import rescuecore2.standard.entities.Human;
 import rescuecore2.standard.entities.Refuge;
 import rescuecore2.standard.entities.StandardEntity;
@@ -12,6 +13,7 @@ import rescuecore2.standard.entities.StandardEntityURN;
 import rescuecore2.standard.entities.StandardWorldModel;
 import rescuecore2.standard.messages.AKClear;
 import rescuecore2.standard.messages.AKClearArea;
+import rescuecore2.messages.control.AKDone;
 import rescuecore2.standard.messages.AKExtinguish;
 import rescuecore2.standard.messages.AKLoad;
 import rescuecore2.standard.messages.AKMove;
@@ -58,6 +60,12 @@ public abstract class StandardAgent<E extends StandardEntity> extends AbstractAg
             model.index();
         }
     }
+
+	@Override
+	protected void processSense(KASense sense) {
+		super.processSense(sense);
+		sendDone(sense.getTime());
+	}
 
     /**
        Send a rest command to the kernel.
@@ -177,6 +185,14 @@ public abstract class StandardAgent<E extends StandardEntity> extends AbstractAg
     */
     protected void sendTell(int time, byte[] data) {
         send(new AKTell(getID(), time, data));
+    }
+
+	/**
+       Send a done command to the kernel.
+       @param time The current time.
+    */
+    protected void sendDone(int time) {
+        send(new AKDone(getID(), time));
     }
 
     /**

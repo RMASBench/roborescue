@@ -1,5 +1,6 @@
 package rescuecore2.standard.messages;
 
+import rescuecore2.messages.control.AKDone;
 import java.io.InputStream;
 import java.io.IOException;
 
