@@ -26,9 +26,17 @@ public class TimedCommandCollector implements CommandCollector {
         long now = System.currentTimeMillis();
         long end = now + time;
         while (now < end) {
-            long diff = end - now;
-            Logger.trace(this + " waiting for " + diff + "ms");
-            Thread.sleep(diff);
+            Logger.trace(this + " waiting for " + 100 + "ms");
+            Thread.sleep(100);
+			boolean done = true;
+			for (AgentProxy next : agents) {
+				 if (!next.isDone(timestep)) {
+					 Logger.trace("Agent " + next.getName() + " not done.");
+					 done = false;
+					 break;
+				 }
+			}
+			if (done) break;
             now = System.currentTimeMillis();
         }
         Collection<Command> result = new ArrayList<Command>();

@@ -45,6 +45,8 @@ public enum ControlMessageURN {
     AK_CONNECT("urn:rescuecore2:messages.control:ak_connect"),
     /** Agent-Kernel acknowledge. */
     AK_ACKNOWLEDGE("urn:rescuecore2:messages.control:ak_acknowledge"),
+	/** Agent-Kernel done. */
+    AK_DONE("urn:rescuecore2:messages.control:ak_done"),
     /** Kernel-Agent OK. */
     KA_CONNECT_OK("urn:rescuecore2:messages.control:ka_connect_ok"),
     /** Kernel-Agent error. */

@@ -245,6 +245,8 @@ public class StandardPerception implements Perception, GUIComponent {
 
     private void addHumanProperties(Human human, ChangeSet result) {
         // Update POSITION, POSITION_EXTRA, DIRECTION, STAMINA, HP, DAMAGE, BURIEDNESS
+        result.addChange(human, human.getXProperty());
+        result.addChange(human, human.getYProperty());
         result.addChange(human, human.getPositionProperty());
         //result.addChange(human, human.getPositionExtraProperty());
         result.addChange(human, human.getDirectionProperty());
