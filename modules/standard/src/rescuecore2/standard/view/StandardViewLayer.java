@@ -3,6 +3,7 @@ package rescuecore2.standard.view;
 import java.awt.geom.Rectangle2D;
 
 import rescuecore2.config.Config;
+import rescuecore2.config.NoSuchConfigOptionException;
 import rescuecore2.standard.entities.StandardWorldModel;
 import rescuecore2.view.AbstractViewLayer;
 import rescuecore2.worldmodel.WorldModel;
@@ -31,8 +32,10 @@ public abstract class StandardViewLayer extends AbstractViewLayer {
     @Override
     public void initialise(Config config) {
         String visibleKey = STANDARD_VIEWER_PREFIX + "." + this.getClass().getSimpleName() + "." + VISIBILITY_SUFFIX;
-        boolean isVisible = config.getBooleanValue(visibleKey, true);
-        setVisible(isVisible);
+		try {
+			boolean isVisible = config.getBooleanValue(visibleKey);
+			setVisible(isVisible);
+		} catch (NoSuchConfigOptionException e) {}
     }
 
     @Override
