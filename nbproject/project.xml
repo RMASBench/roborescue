@@ -145,7 +145,7 @@
                 <action name="rebuild">
                     <script>nbproject/nbjdk.xml</script>
                     <target>clean</target>
-                    <target>compile</target>
+                    <target>jars</target>
                 </action>
                 <action name="run.single">
                     <script>nbproject/ide-file-targets.xml</script>

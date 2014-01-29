@@ -87,13 +87,13 @@
 
   <!-- Old simulators -->
   <target name="oldsims" description="Compile all the old simulators">
-      <javac srcdir="${basedir}/oldsims/" debug="${debug}">
+      <javac includeantruntime="false" srcdir="${basedir}/oldsims/" debug="${debug}">
       <include name="rescuecore/**/*.java"/>
     </javac>
     <jar destfile="${lib.dir}/rescuecore.jar">
       <fileset dir="${basedir}/oldsims" includes="rescuecore/**/*.class"/>
     </jar>
-    <javac srcdir="${basedir}/oldsims/" debug="${debug}">
+    <javac includeantruntime="false" srcdir="${basedir}/oldsims/" debug="${debug}">
       <compilerarg line="-encoding utf-8"/>
       <include name="firesimulator/**/*.java"/>
       <classpath>
@@ -137,6 +137,8 @@
         <include name="firesimulator/**/*.class"/>
       </fileset>
     </delete>
+	<delete file="${lib.dir}/resq-fire.jar" />
+	<delete file="${lib.dir}/rescuecore.jar" />
   </target>
 
   <target name="javadoc-clean" description="Clean up old javadocs">

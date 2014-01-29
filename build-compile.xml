@@ -12,7 +12,7 @@
     </for>
   </target>
 
-  <target name="jars" depends="compile" description="Create all module jars">
+  <target name="jars" depends="oldsims, compile" description="Create all module jars">
     <for list="${modules}" param="module">
       <sequential>
         <_jar module="@{module}"/>
@@ -35,7 +35,7 @@
             </sequential>
           </for>
           <mkdir dir="${build.dir}/@{module}/classes"/>
-          <javac srcdir="${modules.dir}/@{module}/src" destdir="${build.dir}/@{module}/classes" debug="${debug}">
+          <javac includeantruntime="false" srcdir="${modules.dir}/@{module}/src" destdir="${build.dir}/@{module}/classes" debug="${debug}">
             <classpath>
               <path refid="path.common"/>
             </classpath>
